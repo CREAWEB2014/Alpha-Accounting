@@ -121,7 +121,6 @@ Template: standard
 /* -------- Integrate Apps */
 
 .ia-div {
-  float:left;
   margin-bottom:30px;
 
 }
@@ -141,6 +140,22 @@ Template: standard
  margin-bottom:0px;
 }
 
+
+.column-div {
+  float:left;
+  width:48%;
+  margin:0 20px 20px 0;
+}
+
+.alpha {
+  margin-left:0px;
+}
+
+.omega {
+  margin-right:0px;
+
+}
+
 /* ------------------------------------------------------------------------ FAQ */
 
 .post-106 {
@@ -148,6 +163,10 @@ Template: standard
 }
 
 /* ------------------------------------------------------------------------ Contact */
+
+.wpcf7-form-control.wpcf7-textarea {
+  width: 97% !important;
+}
 
 input[type="submit"] {
   color: white;
@@ -220,6 +239,10 @@ height: 217px;
 
 .navbar-fixed-top {
   margin-bottom: 0px;
+}
+
+.column-div {
+  width:100%;
 }
 
 }
