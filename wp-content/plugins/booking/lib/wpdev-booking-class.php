@@ -114,6 +114,10 @@ if (!class_exists('wpdev_booking')) {
              //pre_set_site_transient_update_plugins
             // add_action( 'after_plugin_row', array(&$this,'after_plugin_row'),10,3 );
             // add_filter( 'plugin_row_meta', array(&$this, 'plugin_row_meta'), 10, 4 ); // donot show update for Personal active plugin
+
+            // Load the jQuery in the client side
+            if( !is_admin() ) add_action('wp_enqueue_scripts', array(&$this, 'bc_enqueue_scripts'),100000);
+            
          }
 
          
@@ -1828,11 +1832,11 @@ if ($is_can_be_here) { //Reduction version 3.0 ?>
             }  ?>
 
                 <?php if ( ($version == 'personal') ) { ?>
-                                        <p style="line-height:25px;text-align:center;padding-top:15px;"><a href="http://wpbookingcalendar.com/upgrade-pro<?php echo $multiv ?>/" target="_blank" class="buttonlinktext">Upgrade</a></p>
+                                        <p style="line-height:25px;text-align:center;padding-top:15px;" class="wpdevbk"><a href="http://wpbookingcalendar.com/upgrade-pro<?php echo $multiv ?>/" target="_blank" class="btn">Upgrade</a></p>
                 <?php } elseif ( ($version == 'biz_s') ) { ?>
-                                        <p style="line-height:25px;text-align:center;padding-top:15px;"><a href="http://wpbookingcalendar.com/upgrade-premium<?php echo $multiv ?>/" target="_blank" class="buttonlinktext">Upgrade</a></p>
+                                        <p style="line-height:25px;text-align:center;padding-top:15px;" class="wpdevbk"><a href="http://wpbookingcalendar.com/upgrade-premium<?php echo $multiv ?>/" target="_blank" class="btn">Upgrade</a></p>
                 <?php } elseif ( ($version == 'biz_m') ) { ?>
-                                        <p style="line-height:25px;text-align:center;padding-top:15px;"><a href="http://wpbookingcalendar.com/upgrade-premium-plus<?php echo $multiv ?>/" target="_blank" class="buttonlinktext">Upgrade</a></p>
+                                        <p style="line-height:25px;text-align:center;padding-top:15px;" class="wpdevbk"><a href="http://wpbookingcalendar.com/upgrade-premium-plus<?php echo $multiv ?>/" target="_blank" class="btn">Upgrade</a></p>
                 <?php } ?>
                                 </div>
                             </div>
@@ -2867,9 +2871,33 @@ if ($is_can_be_here) { //Reduction version 3.0 ?>
         }
 
         // Print     J a v a S cr i p t   &    C S S    scripts for admin and client side.
+        function bc_enqueue_scripts() {
+                wp_enqueue_script('jquery');                                    // enqueue the jQuery by Default
+                if (class_exists('wpdev_bk_biz_s')) {                           // Load the jQuery 1.7.1 if the them load the older jQuery and version of booking Calendar is BS or higher
+                    global $wp_scripts;
+                    if (  is_a( $wp_scripts, 'WP_Scripts' ) ) {
+                        if (isset( $wp_scripts->registered['jquery'] )) {
+                            $version = $wp_scripts->registered['jquery']->ver;
+
+                            if ( version_compare( $version, '1.7.1', '<' ) ) {
+                                wp_deregister_script('jquery');
+                                wp_register_script('jquery', ("http://code.jquery.com/jquery-1.7.1.min.js"), false, '1.7.1');
+                                //wp_register_script('jquery', ("http://code.jquery.com/jquery-latest.min.js"), false, false);
+                                wp_enqueue_script('jquery');
+                            }
+                        }
+                    }
+                }
+         }
+
+
         function print_js_css($is_admin =1 ) {
 
-            if (! ( $is_admin))  wp_print_scripts('jquery');
+            if (! ( $is_admin))  {
+                wp_print_scripts('jquery');               
+                // if(!is_admin()) add_action('wp_enqueue_scripts', array(&$this, 'bc_enqueue_scripts'),100000);
+            }
+            
             //wp_print_scripts('jquery-ui-core');
 
             //   J a v a S c r i pt
@@ -2978,7 +3006,9 @@ if ($is_can_be_here) { //Reduction version 3.0 ?>
                 }
                 ?> <link href="<?php echo WPDEV_BK_PLUGIN_URL; ?>/interface/bs/css/bs.min.css" rel="stylesheet" type="text/css" />  <?php
                 ?> <link href="<?php echo WPDEV_BK_PLUGIN_URL; ?>/css/client.css" rel="stylesheet" type="text/css" /> <?php
-                if ($is_not_load_bs_script_in_client !== 'On') {
+                if ($is_not_load_bs_script_in_client !== 'On') 
+                if (class_exists('wpdev_bk_biz_s'))
+                {
                     ?> <script type="text/javascript" src="<?php echo WPDEV_BK_PLUGIN_URL; ?>/interface/bs/js/bs.min.js"></script>  <?php
                 }
             }
@@ -3520,7 +3550,9 @@ if ($is_can_be_here) { //Reduction version 3.0 ?>
             else                             add_bk_option( 'booking_is_delete_if_deactive' ,'Off'); // check
             add_bk_option( 'booking_dif_colors_approval_pending' , 'On' );
             add_bk_option( 'booking_is_use_hints_at_admin_panel' , 'On' );
-            add_bk_option( 'booking_is_not_load_bs_script_in_client' , 'Off' );
+add_bk_option( 'booking_is_not_load_bs_script_in_client' , 'Off' );
+            //if (class_exists('wpdev_bk_biz_s')) add_bk_option( 'booking_is_not_load_bs_script_in_client' , 'Off' );
+            //else                                add_bk_option( 'booking_is_not_load_bs_script_in_client' , 'On' ); // we are do  not need the Bootstrap if its lower then BS version, at client side.
             add_bk_option( 'booking_is_not_load_bs_script_in_admin' , 'Off' );
             add_bk_option( 'booking_multiple_day_selections' , 'On');
 

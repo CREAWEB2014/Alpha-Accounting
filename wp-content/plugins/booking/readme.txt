@@ -3,8 +3,8 @@ Contributors: wpdevelop
 Donate link: http://wpbookingcalendar.com/buy/
 Tags:  Booking calendar, Booking, Book, to book, calendar, Reservation, Calendar, hotel, rooms, rent, appointment, scheduling, availability, availability calendar, event, events, event calendar, resource scheduling, Rental, Meeting scheduling, reservation plugin, accommodations, bookable, bookable events
 Requires at least: 2.7
-Tested up to: 3.3.2
-Stable tag: 4.0
+Tested up to: 3.4
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,7 +66,10 @@ If you have any further questions, please fill free to <a href="mailto:info@wpbo
 
 == Changelog ==
 
-
+= 4.0.1 =
+ * Fix issue of not posbility to make the reservation, when using only the booking form, without calendar.
+ * Load the jQuery 1.7.1, if the theme is loaded older version by default
+ * Do not load by default the Bootstrap JS if its lower then BS version, at client side of site. At these versions we are do not need the bootstrap at client side, so its mean that at client side in this case we can use the jQuery version older than 1.7.1 version.
 = 4.0 =
 * Features and issue fixings in All versions:
  * New clean stylish interface of Booking Listing menu page
@@ -89,7 +92,8 @@ If you have any further questions, please fill free to <a href="mailto:info@wpbo
 * Many new features in other versions of Booking Calendar, please check the full list <a href="http://wpbookingcalendar.com/changelog/" title="changelog">here</a>. <br /><br />See full change logs at this <a href="http://wpbookingcalendar.com/changelog/" title="changelog">page</a>.
 
 == Upgrade Notice ==
-
+= 4.0.1 =
+Fix some issues raltive to the loading of the old jquery library by theme and as result the calendar was invisible.
 = 4.0 =
 New stylish booking admin interface. New tabs (filters, actions) inbooking listing page. Booking pagination. Many other new features and fixes...
 
@@ -112,7 +116,7 @@ Right now plugin is support languages:
 <strong> Many languages are partially translated, so please recheck your language before use of plugin. We are open for your help in new translations or correcting exist ones.</strong><br /> You can translate to new language or fix exist one, using this <a href="http://wpbookingcalendar.com/faq/make-translation-of-wp-plugin/" title="Tutorial of translation wordpress plugin">instruction</a> 
 == Tech support ==
 
-If you have some questions, which you do not found at <a href="http://wpbookingcalendar.com/faq/" title="FAQ">FAQ</a> you can post them at <a href="http://wpbookingcalendar.com/support/" title="Help board">technical help board</a>
+If you have some questions, which you do not found at <a href="http://wpbookingcalendar.com/faq/" title="FAQ">FAQ</a> you can post them at <a href="http://wpbookingcalendar.com/issues/" title="Help board">technical help board</a>
 
 == New ideas ==
 

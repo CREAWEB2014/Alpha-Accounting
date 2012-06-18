@@ -16,7 +16,7 @@ Template: standard
 
 /* ------------------------------------------------------------------------ Customizations */
 
-.clearfix {
+.clear {
   clear:both;
 }
 
@@ -81,8 +81,8 @@ Template: standard
 
 #callout {
   float: right;
-  width: 255px;
-  padding-top:50px;
+  width: 300px;
+  padding-top:8px;
   margin: 0px auto;
 }
 

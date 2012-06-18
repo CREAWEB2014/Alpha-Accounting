@@ -3,10 +3,10 @@
 Plugin Name: Booking Calendar
 Plugin URI: http://wpbookingcalendar.com/demo/
 Description: Online reservation and availability checking service for your site.
-Version: 4.0
+Version: 4.0.1
 Author: wpdevelop
 Author URI: http://wpbookingcalendar.com/
-Tested WordPress Versions: 2.8.3 - 3.3.2
+Tested WordPress Versions: 2.8.3 - 3.4
 */
 
 /*  Copyright 2009 - 2012  www.wpbookingcalendar.com  (email: info@wpbookingcalendar.com),
@@ -137,6 +137,8 @@ M i n o r   T O D O   List:
  M a j o r   T O D O   List:
 -------------------------------------------------------
  * New calendar scripts....
+ *
+ * Filters functionality: "possibility to set  the range of dates" or grouping of the several exist filters in group.
  
  * Popup shortcode form:
  * - Showing 2 or more calendars with one form
@@ -217,69 +219,13 @@ M i n o r   T O D O   List:
 -----------------------------------------------
 Change Log and Features for Future Releases :
 -----------------------------------------------
-= 4.0 =
+= 4.0.1 =
 * Personal / Business Small / Business Medium / Business Large / MultiUser versions features:
- * New version names and functionality of Booking Calendar WordPress plugin: Free, Personal, Business Small, Business Medium, Business Large, MultiUser versions.
- *   (Personal, Business Small, Business Medium, Business Large, MultiUser)
- * New interface with reorganized menu itmes at Settings and Resource menu pages. More logical and intuitive settings. (Personal, Business Small, Business Medium, Business Large, MultiUser)
- * * New sub menu pages in Resources menu page: Cost and Rates, Advanced cost, Coupons, Availability, Season filters
- * * New cost sections at the general booking settings page.
- * * New auto cancellation pending not payed bookings sections at the general booking settings page.
- * * New tab selections for showing specific sections in Payment and Emails setttings page.
- * * Posibility to set/check active status of Payment systems and Emails templates at the top settings submenu
- * * Removed sub menu pages from Settings menu: Cost and availbaility, Season filters
- * * Removed sections: from settings Payment page - Cost of resources, Advanced cost managment, Auto cancel pending not payed bookings.
- * * New "Add resource" style section.
- * Pagination of the resource pages.
- * Ajax changing resource for specific booking, changing the cost and notes
- * Change the Payment status of booking
- * Showing the labels for the each booking, like Approved/Pending, payment status, resource...
- * Export bookings to CSV (Personal, Business Small, Business Medium, Business Large, MultiUser)
- * Print functionality (Personal, Business Small, Business Medium, Business Large, MultiUser)
- * Custom booking form selection at the Admin menu: "Add booking" (Business Medium, Business Large)
- * Integration Instant Payment Notification (IPN) is a message service that notifies you of events related to PayPal transactions (Business Small, Business Medium, Business Large, MultiUser)
- * Set costs of booking resources at the Resources page, and removed it from the Booking > Settings > Payment page. (Business Medium, Business Large, MultiUser)
- * Set costs of booking resources at the Resources page, and removed it from the Booking > Settings > Payment page. (Business Medium, Business Large, MultiUser)
- * Activation of the Auto approve functionality. (Business Small, Business Medium, Business Large)
- * Posibility to apply the 100% discount, using the coupon codes (Business Large)
- * Disbaled the submit button, when user is activated the range days selection using 2 mouse clicks, and click only once at the calendar.
- * Search of availability based on the "season filters" functionality in additional to the "booked dates" (Business Large, MultiUser)
- * Possibility to search in the custom posts and pages (Business Large, MultiUser)
- * Search form is mark the searched dates as selected at the page with booking calendar (Business Large, MultiUser)
- * Add possibility in Paypal form integration to indicates whether the transaction is payment on a final sale or an authorization for a final sale, to be captured later. (Business Small, Business Medium, Business Large, MultiUser)
- * Fix integration of Paypal Pro Hosted Solution.(Business Small, Business Medium, Business Large, MultiUser)
- * Fix issue of showing cost or availbaility tooltip in wrong place, when mouse over specific date in calendar at some themes. (Business Small, Business Medium, Business Large, MultiUser)
- * Fix. Posibility to save 0 cost for booking resource. (Business Small, Business Medium, Business Large, MultiUser)
- * Fix issue of showing no results during availability searching, when wordpress system is use some third party plugins for translation of blog. (Business Large, MultiUser)
- * Fix issue of editing exist resrvation at admin panel, when was booked several days, but after saving the edited resrvation (edited was only fields) is saved only first booking day. Right now its fixed.
- * Fix issue of cost calculation for "Valuation days" settings, when "recurent time" feature is active and do not using any time.
- * Fix issue with posibility to select the days "using range days selection with 1 mouse click", when inside of this range of days are exist some unavailbale day(s).
- * Fix issue of adding the booking to not correct booking resource at the "Add booking" admin page, when no selection of booking resource was made and first booking resource was deleted.
- * Fix showing warning message, if the "Disable reservations in different booking resources" option is activated. (Business Large)
- * Fix not showing the booking resource at the "short dates", if some last dates is belong to different booking resource. (Business Large)
- * Fix correct updating booking form, when admin chnage the booking resource for the booking.
- * Fix max. days selection, if activated the range days selection, using 2 mouse clicks and discreet number of days settings.
- * Fix coupon creation issue of not showing coupons, when some coupon not have selected "All" resources.
- * Fix Error during updating remarks in BD [Query was empty].. It happens when a '%' sign in the note.
+ * 
 * Features and issue fixings in All versions:
- * New clean stylish interface of Booking Listing menu page
- * New booking toolbar, with tabs: Filter, Actions, Help
- * Performance improvement at the booking admin panel for the large amount of data.
- * New filter for the showing bookings, based on number of parameters, like: Dates o booking, creation date of booking, status of bookings, keywords ( resources, cost and status of payment for the paid versions )
- * Search booking by ID
- * Actions on a single booking
- * Posibility to set Approved booking as Pending
- * Ajax approving/unapproving, deleting of bookings
- * Pagination of the booking listing.
- * Showing the date/time of booking creation
- * New tooltip system
- * German translation.
- * Fix issue of minimum days selection in range days selection, when visitor is click only once at days selection and minimum days selection is more then 1 day
- * Fix issue of not showing the "Booking Calendar" button at the edit toolbar, when toolbar in HTML mode at WOrdPress 3.3 and higher.
- * Fix issue of not posibility to save the "links" at the footer inside of the booking widget for sidebar.
- * Fix issue "... is not a legal ECMA-262 octal constant ...", which is appear at some sites, because not correct transfrom of this varable:  var wpdev_bk_today = new Array( ....
- * Removed jWPDev variable and returned to jQuery varible. The construction "jWPDev = jQuery.noConflict()" in some themes previously can generate JS errors.
-
+ * Fix issue of not posbility to make the reservation, when using only the booking form, without calendar.
+ * Load the jQuery 1.7.1 if the theme is loaded older version by default
+ * Do not load by default the Bootstrap JS if its lower then BS version, at client side of site. At these versions we are do not need the bootstrap at client side, so its mean that at client side in this case we can use the jQuery version older than 1.7.1 version.
 */
 // </editor-fold>
 

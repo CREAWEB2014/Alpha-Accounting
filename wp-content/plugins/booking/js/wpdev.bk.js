@@ -25,7 +25,9 @@
             }
 
             function selectDay(date) {
-                jQuery('.datepick-days-cell' ).popover('hide');
+                if(typeof( selectDayPro_rangeSelection ) == 'function') { // Check if this minimum BS version, and then proced
+                    jQuery('.datepick-days-cell' ).popover('hide');
+                }
                 jQuery('#date_booking' + bk_type).val(date);
                 if(typeof( selectDayPro ) == 'function') {selectDayPro( date, bk_type);}
             }
@@ -126,9 +128,11 @@
                 else                                return [true, 'cal4date-' + class_day +' reserved_days_count' + reserved_days_count + ' ' ];
             }
 
-            function changeMonthYear(year, month){ 
-                if(typeof( prepare_tooltip ) == 'function') {
-                    setTimeout("prepare_tooltip("+bk_type+");",1000);
+            function changeMonthYear(year, month){
+                if(typeof( selectDayPro_rangeSelection ) == 'function') { // Check if this minimum BS version, and then proced
+                    if(typeof( prepare_tooltip ) == 'function') {
+                        setTimeout("prepare_tooltip("+bk_type+");",1000);
+                    }
                 }
                 if(typeof( prepare_highlight ) == 'function') {
                  setTimeout("prepare_highlight();",1000);
@@ -180,7 +184,9 @@
 
 
             //jQuery('td.datepick-days-cell').bind('click', 'selectDayPro');
-            if(typeof( prepare_tooltip ) == 'function') {setTimeout("prepare_tooltip("+bk_type+");",1000);}
+            if(typeof( selectDayPro_rangeSelection ) == 'function') { // Check if this minimum BS version, and then proced
+                if(typeof( prepare_tooltip ) == 'function') {setTimeout("prepare_tooltip("+bk_type+");",1000);}
+            }
     }
 
     // Show Yes/No dialog
@@ -642,7 +648,7 @@
             if ( is_this_time_selections_not_available( bk_type, submit_form.elements ) )
                 return;
 
-
+        if (document.getElementById('calendar_booking'+bk_type) != null ) {
         var inst = jQuery.datepick._getInst(document.getElementById('calendar_booking'+bk_type));
         if (wpdev_bk_is_dynamic_range_selection != undefined)
             if ( wpdev_bk_is_dynamic_range_selection )
@@ -651,7 +657,7 @@
                         alert(message_verif_selectdts);
                         return;
                     }
-
+        }
         //Show message if no selected days
         if (document.getElementById('date_booking' + bk_type).value == '')  {
 

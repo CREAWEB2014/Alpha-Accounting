@@ -117,27 +117,17 @@
 									
 								</div><!-- /#logo -->
 							</div><!-- /.span6 -->
-							<div class="span6">
+							<div class="span4 offset2">
 								<div id="callout">
 									<h1><i class="icon-phone-sign"></i>  Call Us Today  <i class="icon-phone-sign"></i></h1>
-									<h4>Proudly Serving the State of NC</h4>
-									<table width="290px">
+									<h4>Proudly Serving the State of NC Since 1996</h4>
+									<img src="http://localhost:8888/alpha/wp-content/uploads/2012/06/intuit-header_300px.png" alt="Intuit Premier Reseller Banner">
+									<table width="100%">
 										<tr>
 										<td><h3>919.217.2515</h3></td>
-										<td><h3>866.890.7227</h3></td>
+										<td style="float:right;"><h3>866.890.7227</h3></td>
 										</tr>
 									</table>
-
-<!-- 									<table width="255px">
-										<tr>
-										<td><h3>Local:</h3></td>
-										<td><h3>919.217.2515</h3></td>
-										</tr>
-										<tr>
-										<td><h3>Toll Free:</h3></td>
-										<td><h3>866.890.7227</h3></td>
-										</tr>
-									</table> -->
 								</div>
 							</div>
 						</div><!-- /row -->
