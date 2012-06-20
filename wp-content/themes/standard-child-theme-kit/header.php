@@ -124,8 +124,8 @@
 									<img src="http://localhost:8888/alpha/wp-content/uploads/2012/06/intuit-header_300px.png" alt="Intuit Premier Reseller Banner">
 									<table width="100%">
 										<tr>
-										<td><h3>919.217.2515</h3></td>
-										<td style="float:right;"><h3>866.890.7227</h3></td>
+										<td><h3><a style="color: #fff" href="tel:1-919-217-2515">919-217-2515</a></h3></td>
+										<td style="float:right;"><h3><a style="color: #fff" href="tel:1-866-890-7227">866-890-7227</a></h3></td>
 										</tr>
 									</table>
 								</div>

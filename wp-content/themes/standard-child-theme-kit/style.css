@@ -25,17 +25,13 @@ Template: standard
   padding: 90px 0;
   background: url(images/logo.png) no-repeat -3% 50%;
   background-size: 100%;
-}
-
-#site-description {
-  color: #222;
-  font-size: 13px;
-  letter-spacing: .1em;
+  max-width:460px;
 }
 
 .fademe img:hover, a img:hover {
   opacity: 1;
 }
+
 
 /* ------------------------------------------------------------------------ Nav */
 
@@ -215,7 +211,7 @@ input:active [type="submit"] {
 
 #callout {
   float: none;
-  width: 255px;
+  width: 260px;
   padding-top:10px;
   margin: 0px auto;
 }
