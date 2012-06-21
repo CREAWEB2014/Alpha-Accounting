@@ -121,7 +121,7 @@
 								<div id="callout">
 									<h1><i class="icon-phone-sign"></i>  Call Us Today  <i class="icon-phone-sign"></i></h1>
 									<h4>Proudly Serving the State of NC Since 1996</h4>
-									<img src="http://localhost:8888/alpha/wp-content/uploads/2012/06/intuit-header_300px.png" alt="Intuit Premier Reseller Banner">
+									<h4>"Accounting is Hard, Calling us is Easy"</h4>
 									<table width="100%">
 										<tr>
 										<td><h3><a style="color: #fff" href="tel:1-919-217-2515">919-217-2515</a></h3></td>
