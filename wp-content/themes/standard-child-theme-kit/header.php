@@ -120,7 +120,7 @@
 							<div class="span4 offset2">
 								<div id="callout">
 									<h1><i class="icon-phone-sign"></i>  Call Us Today  <i class="icon-phone-sign"></i></h1>
-									<h4>Proudly Serving the State of NC Since 1996</h4>
+									<h4>Proudly Serving Our Customers Since 1996</h4>
 									<h4>"Accounting is Hard, Calling us is Easy"</h4>
 									<table width="100%">
 										<tr>
