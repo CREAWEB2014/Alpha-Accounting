@@ -1,66 +1,3 @@
-/* ===================================================
- * bootstrap-transition.js v2.0.4
- * http://twitter.github.com/bootstrap/javascript.html#transitions
- * ===================================================
- * Copyright 2012 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================== */
-
-
-!function ($) {
-
-  $(function () {
-
-    "use strict"; // jshint ;_;
-
-
-    /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
-     * ======================================================= */
-
-    $.support.transition = (function () {
-
-      var transitionEnd = (function () {
-
-        var el = document.createElement('bootstrap')
-          , transEndEventNames = {
-               'WebkitTransition' : 'webkitTransitionEnd'
-            ,  'MozTransition'    : 'transitionend'
-            ,  'OTransition'      : 'oTransitionEnd'
-            ,  'msTransition'     : 'MSTransitionEnd'
-            ,  'transition'       : 'transitionend'
-            }
-          , name
-
-        for (name in transEndEventNames){
-          if (el.style[name] !== undefined) {
-            return transEndEventNames[name]
-          }
-        }
-
-      }())
-
-      return transitionEnd && {
-        end: transitionEnd
-      }
-
-    })()
-
-  })
-
-}(window.jQuery);
-
-
 /* ============================================================
  * bootstrap-dropdown.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
@@ -383,10 +320,8 @@
   })
 
 }( window.jQuery );
-
-
 /* =============================================================
- * bootstrap-collapse.js v2.0.4
+ * bootstrap-collapse.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -404,21 +339,16 @@
  * limitations under the License.
  * ============================================================ */
 
+!function( $ ){
 
-!function ($) {
+  "use strict"
 
-  "use strict"; // jshint ;_;
-
-
- /* COLLAPSE PUBLIC CLASS DEFINITION
-  * ================================ */
-
-  var Collapse = function (element, options) {
-    this.$element = $(element)
+  var Collapse = function ( element, options ) {
+  	this.$element = $(element)
     this.options = $.extend({}, $.fn.collapse.defaults, options)
 
-    if (this.options.parent) {
-      this.$parent = $(this.options.parent)
+    if (this.options["parent"]) {
+      this.$parent = $(this.options["parent"])
     }
 
     this.options.toggle && this.toggle()
@@ -434,39 +364,31 @@
     }
 
   , show: function () {
-      var dimension
-        , scroll
-        , actives
+      var dimension = this.dimension()
+        , scroll = $.camelCase(['scroll', dimension].join('-'))
+        , actives = this.$parent && this.$parent.find('.in')
         , hasData
-
-      if (this.transitioning) return
-
-      dimension = this.dimension()
-      scroll = $.camelCase(['scroll', dimension].join('-'))
-      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
 
       if (actives && actives.length) {
         hasData = actives.data('collapse')
-        if (hasData && hasData.transitioning) return
         actives.collapse('hide')
         hasData || actives.data('collapse', null)
       }
 
       this.$element[dimension](0)
-      this.transition('addClass', $.Event('show'), 'shown')
+      this.transition('addClass', 'show', 'shown')
       this.$element[dimension](this.$element[0][scroll])
+
     }
 
   , hide: function () {
-      var dimension
-      if (this.transitioning) return
-      dimension = this.dimension()
+      var dimension = this.dimension()
       this.reset(this.$element[dimension]())
-      this.transition('removeClass', $.Event('hide'), 'hidden')
+      this.transition('removeClass', 'hide', 'hidden')
       this.$element[dimension](0)
     }
 
-  , reset: function (size) {
+  , reset: function ( size ) {
       var dimension = this.dimension()
 
       this.$element
@@ -474,43 +396,37 @@
         [dimension](size || 'auto')
         [0].offsetWidth
 
-      this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
+      this.$element[size ? 'addClass' : 'removeClass']('collapse')
 
       return this
     }
 
-  , transition: function (method, startEvent, completeEvent) {
+  , transition: function ( method, startEvent, completeEvent ) {
       var that = this
         , complete = function () {
-            if (startEvent.type == 'show') that.reset()
-            that.transitioning = 0
+            if (startEvent == 'show') that.reset()
             that.$element.trigger(completeEvent)
           }
 
-      this.$element.trigger(startEvent)
-
-      if (startEvent.isDefaultPrevented()) return
-
-      this.transitioning = 1
-
-      this.$element[method]('in')
+      this.$element
+        .trigger(startEvent)
+        [method]('in')
 
       $.support.transition && this.$element.hasClass('collapse') ?
         this.$element.one($.support.transition.end, complete) :
         complete()
-    }
+  	}
 
   , toggle: function () {
       this[this.$element.hasClass('in') ? 'hide' : 'show']()
-    }
+  	}
 
   }
 
-
- /* COLLAPSIBLE PLUGIN DEFINITION
+  /* COLLAPSIBLE PLUGIN DEFINITION
   * ============================== */
 
-  $.fn.collapse = function (option) {
+  $.fn.collapse = function ( option ) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('collapse')
@@ -541,4 +457,4 @@
     })
   })
 
-}(window.jQuery);
+}( window.jQuery );

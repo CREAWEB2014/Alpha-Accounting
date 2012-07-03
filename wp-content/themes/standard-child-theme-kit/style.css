@@ -81,7 +81,7 @@ a {
 #callout {
   float: right;
   width: 300px;
-  padding-top:33px;
+  padding-top:64px;
   margin: 0px auto;
 }
 
@@ -95,6 +95,28 @@ a {
 }
 
 /* ------------------------------------------------------------------------ Sidebar */
+
+#execphp-2 {
+  height: 90px;
+}
+
+.execphpwidget ul{
+  position: relative;
+  left: 0;
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.execphpwidget li {
+  display: block;
+  float: left;
+}
+
+.execphpwidget a {
+  margin: 5px 10px 6px 0px;
+  padding: 0;
+}
 
 .awesome {
   position: relative;
