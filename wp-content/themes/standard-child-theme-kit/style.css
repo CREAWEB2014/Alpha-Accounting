@@ -20,14 +20,6 @@ Template: standard
   clear:both;
 }
 
-#site-title {
-  text-indent: -9999px;
-  padding: 90px 0;
-  background: url(images/logo.png) no-repeat -3% 50%;
-  background-size: 100%;
-  max-width:460px;
-}
-
 .fademe img:hover, a img:hover {
   opacity: 1;
 }
@@ -51,7 +43,6 @@ a {
 
 #header {
   background: #3074BC;
-  margin-bottom: 20px;
 }
 
 /* ---------- Blog */
@@ -68,20 +59,10 @@ a {
 
 /* ---------- End Blog */
 
-#logo {
-	padding: 10px 0 10px 0;
-}
-
-#site-description {
-	color: #222;
-	font-size: 16px;
-	letter-spacing: .1em;
-}
-
 #callout {
   float: right;
   width: 300px;
-  padding-top:64px;
+  padding-top:16px;
   margin: 0px auto;
 }
 
@@ -282,17 +263,9 @@ text-decoration: none;
 #callout {
   float: none;
   width: 260px;
-  padding-top:10px;
+  padding-top:30px;
   margin: 0px auto;
 }
-
-/*.team-div {
-height: 480px;
-}
-
-.team-div:last-child {
-height: 217px;
-}*/
 
 }
 
